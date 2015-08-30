@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="MarketMapsProject">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes/" source-path="/ImportedClasses"/>
+        <dependent-module archiveName="commons-io-2.4-javadoc.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-io-2.4-javadoc/commons-io-2.4-javadoc">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-fileupload-1.3.1.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-fileupload-1.3.1/commons-fileupload-1.3.1">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-io-2.4.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-io-2.4/commons-io-2.4">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-io-2.4-tests.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-io-2.4-tests/commons-io-2.4-tests">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-io-2.4-sources.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-io-2.4-sources/commons-io-2.4-sources">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-io-2.4-test-sources.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-io-2.4-test-sources/commons-io-2.4-test-sources">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="MarketMapsProject"/>
+        <property name="java-output-path" value="/MarketMapsProject/build/classes"/>
+    </wb-module>
+</project-modules>

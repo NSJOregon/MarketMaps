@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>MarketMaps Login</title>	
+	<script src="js/Login.js"></script>
+	
+	<style>
+	body{
+			background: -webkit-linear-gradient(#006666, white); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(#006666, white); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(#006666, white); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(#006666, white); /* Standard syntax (must be last) */
+	     	font: 15px arial, sans-serif;
+	     	color: #ffffff;
+	    }
+	</style>
+</head>
+
+<body>
+<h1>Admin Login Form</h1>
+<p>Please enter your username and password to continue.</p>
+<table cellspacing="5" border="0">
+  <form name="form" action="j_security_check" method="get" onsubmit="return validate();">
+    <tr>
+        <td align="right">Username</td>
+        <td><input type="text" name="j_username"></td>
+    </tr>
+    <tr>
+        <td align="right">Password</td>
+        <td><input type="password" name="j_password"></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Login"></td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>

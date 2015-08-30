@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/ch14userAdmin">
+
+
+    <Resource name="jdbc/marketmaps" auth="Container" 
+        maxActive="100" maxIdle="30" maxWait="10000" 
+        username="root" password="sesame" 
+        driverClassName="com.mysql.jdbc.Driver" 
+        url="jdbc:mysql://localhost:3306/marketmaps?autoReconnect=true" 
+        logAbandoned="true" removeAbandoned="true" 
+        removeAbandonedTimeout="60" type="javax.sql.DataSource" />
+
+
+
+
+    <Realm className="org.apache.catalina.realm.JDBCRealm" debug="99"
+          driverName="com.mysql.jdbc.Driver"
+          connectionURL="jdbc:mysql://localhost:3306/marketmaps"
+          connectionName="root" connectionPassword="sesame"
+          userTable="UserPass" userNameCol="Username" userCredCol="Password"
+          userRoleTable="UserRole" roleNameCol="Rolename" />
+
+
+</Context>
