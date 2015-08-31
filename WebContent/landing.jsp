@@ -12,11 +12,15 @@
 	<font color="#ffffff" size="2" face="Helvetica, Arial, sans-serif">	<a href="addToCompanyList">Login</a></font>
 	<title>MarketMaps</title>	
 		<style>
+			
+					
 			#grad1{
-				background: -webkit-linear-gradient(#006666, white, #003D3D, #006666, white); /* For Safari 5.1 to 6.0 */
-				background: -o-linear-gradient(#006666, white, #006666, white); /* For Opera 11.1 to 12.0 */
-				background: -moz-linear-gradient(#006666, white, #006666, white); /* For Firefox 3.6 to 15 */
-				background: linear-gradient(#006666, white, #006666, white); /* Standard syntax (must be last) */
+
+                background-image: url("backgroundimage.jpg");
+                background-color: #0E4039;
+                background-repeat: no-repeat;
+              	background-size: 100%;
+		
 			}
 		
 		    #map-canvas {
@@ -35,6 +39,13 @@
 		        background-color: #fff;
 		        padding: 5px;
 		        border: 1px solid #999;
+	        }
+	        
+	        #table{
+	        color:#ffffff;
+	        size="5";
+	        font-family: Verdana;
+	        
 	        }
     	</style>
     
@@ -123,10 +134,6 @@
 	    for (index = 0; index < array.length; ++index) {
 	        codeAddress(array[index]);
 	    }
-	  
-	    
-    
-	    
 	  }
 	
 	  function codeAddress() {
@@ -151,8 +158,7 @@
 	  
 	  
 	  function codeAddress(address) {
-	
-	 		
+ 		
 		 	  geocoder.geocode( { 'address': address}, function(results, status) {
 		   
 		 	  if (status == google.maps.GeocoderStatus.OK) {
@@ -163,29 +169,15 @@
 		           position: results[0].geometry.location,
 		           icon: 'marketmapsicon.png'
 
-		           //title: 'HELP!?'
 		       		});
 		     } else {
 		       alert('Geocode was not successful for the following reason: ' + status);
 		     }
-		 	  
-//		 	  var infowindow = new google.maps.InfoWindow({
-//		 	      content: 'TEST TEST'
-//   	 	    	 content: '<IMG BORDER="0" ALIGN="Left" SRC="stagleton.jpg"> My name is ' + name
-//		 	  });
-		 	  
-		 	  
-//		 	  google.maps.event.addListener(marker, 'click', function() {
-//				    infowindow.open(map,marker);
-//				  });
-		 	  
+	 	  
 		   });
-
-		 	  
+	 	  
 	 	}
 	  
-	     
-
         /*Upon loading the window call initialize JavaScript fuction*/
    		google.maps.event.addDomListener(window, 'load', initialize);
    	 
@@ -210,22 +202,18 @@
 			</tbody>
 		</table>
 	
-
-
- 
 <!-- Code below reads the list of companies from the request object and displays -->    
 
 	<table border="0" cellpadding="10" cellspacing="2" width="100%">
-	<tbody>
+
+	<tbody id="table">
 	 
 	  <%
 				if(companyList!=null){
 				for (Company currentCompany:companyList)
 				{
 				%>
-					  					  
-					<!--   		  <form action="addToCompanyList" method="post">  -->					  
-			
+
 						  <tr>
 						    <td><%= currentCompany.getName()%></td>
 						    <td><%= currentCompany.getAddress()%></td>
@@ -254,15 +242,12 @@
 					         }
 					         
 					       %>    
-							</td>					    
-
-					        					        
-					       
-                            
-           			  </tr>
+							</td>					    					        					        
+         			  </tr>
 					<%}}%>
-	
-		 </tbody>
+			 
+			 </tbody>
+			 
 		</table>
 	<br>
 	
