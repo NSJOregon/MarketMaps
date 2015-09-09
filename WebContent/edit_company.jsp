@@ -9,13 +9,17 @@
 	</head>
 <body>
  	<%
-          Company currentCompany = (Company)request.getAttribute("currentCompany");
- 	      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		  ImageIO.write(currentCompany.getImg(), "jpg", baos );
-		  baos.flush();
-	      byte[] imageInByteArray = baos.toByteArray();
-		  baos.close();
-		  String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
+    Company currentCompany = (Company)request.getAttribute("currentCompany");
+     String b64="";      
+
+     if(currentCompany.getImg()!=null){
+     ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	  ImageIO.write(currentCompany.getImg(), "jpg", baos );
+	  baos.flush();
+    byte[] imageInByteArray = baos.toByteArray();
+	  baos.close();
+	  b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
+     }
 	%>
     <form action="editCompanyInfo" method="post" enctype="multipart/form-data">
 	
@@ -23,7 +27,9 @@
 		
 		    <tr>
 		        <td align="right">Company Name:</td>
-		        <td><input type="text" name="name" value="${currentCompany.name}" >
+<!-- 		        <td><input type="text" name="name" value="${currentCompany.name}" > -->
+				<td>${currentCompany.name}
+		        <input type="hidden" name="name" value="${currentCompany.name}" >
 		        </td>
 		    </tr>
 		    <tr>
@@ -34,6 +40,11 @@
 		    <tr>
 		        <td align="right">State:</td>
 		        <td><input type="text" name="state" value="${currentCompany.state}">
+		        </td>
+		    </tr>
+		    <tr>
+		        <td align="right">Description:</td>
+		        <td><input type="text" name="description" value="${currentCompany.description}">
 		        </td>
 		    </tr>
 		        <td><img src="data:image/jpg;base64, <%=b64%>" alt="No Company Logo Added" style="max-height: 100px; max-width: 100px;"/></td>

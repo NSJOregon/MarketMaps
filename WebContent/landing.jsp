@@ -43,7 +43,7 @@
 	        
 	        #table{
 	        color:#ffffff;
-	        size="5";
+	        size="20";
 	        font-family: Verdana;
 	        
 	        }
@@ -215,16 +215,22 @@
 				%>
 
 						  <tr>
-						    <td><%= currentCompany.getName()%></td>
-						    <td><%= currentCompany.getAddress()%></td>
-						    <td><%= currentCompany.getCity()%></td>
-						    <td><%= currentCompany.getState()%></td>
-						    <td><%= currentCompany.getZipcode()%></td>
-						    <td><%= currentCompany.getPhonenumber()%></td>
-						    <td><%= currentCompany.getEmail()%></td>
-						    <td><%= currentCompany.getDescription()%></td>
-						    <td><%= currentCompany.getOwner()%></td>
-						    
+						    <td></td>
+				        	<font size="10"><td><%= currentCompany.getName()%></td></font>
+                  		   	<td><%= currentCompany.getCity()%>,
+							<%= currentCompany.getState()%></td>
+    						<td><%= currentCompany.getDescription()%></td>
+						  
+						  <!-- Other company information that could be accessed at a later time
+							    <td><%= currentCompany.getName()%></td>
+							    <td><%= currentCompany.getAddress()%></td>
+							    <td><%= currentCompany.getCity()%></td>
+							    <td><%= currentCompany.getState()%></td>
+							    <td><%= currentCompany.getZipcode()%></td>
+							    <td><%= currentCompany.getPhonenumber()%></td>
+							    <td><%= currentCompany.getEmail()%></td>
+							    <td><%= currentCompany.getOwner()%></td>
+						    -->
 						    <td>
 						<%
 						  if(currentCompany.getImg()!=null){
@@ -236,9 +242,7 @@
 							  baos.close();
 							  String b64 ="";
 							  b64=javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
-	
-							  
-							 out.println("<img src='data:image/jpg;base64,"+ b64 + "' alt='No Company Logo Added' style='max-height: 100px; max-width: 100px;'/>");
+							  out.println("<img src='data:image/jpg;base64,"+ b64 + "' alt='No Company Logo Added' style='max-height: 100px; max-width: 100px;'/>");
 					         }
 					         
 					       %>    

@@ -2,9 +2,17 @@
 
 <html>
 	<head>
-	    <title>MarketMaps add a Company</title>
-	</head>
+	    <title>MarketMaps Add a Company</title>
+	</head>    
 <body>
+
+
+    <%
+    	String message = (String) request.getAttribute("message");
+    	if (message==null) message="";
+    %>
+     <p><i><%= message %></i></p>
+
     <form action="addToCompanyList" method="post" enctype="multipart/form-data">
 		<table cellspacing="5" border="0">
 		    <tr>
@@ -20,6 +28,11 @@
 		    <tr>
 		        <td align="right">State:</td>
 		        <td><input type="text" name="state">
+		        </td>
+		    </tr>
+		    <tr>
+		        <td align="right">Description:</td>
+		        <td><input type="text" name="description">
 		        </td>
 		    </tr>
 		    <tr>

@@ -9,7 +9,7 @@
 	<body>
 		<%
 			session.invalidate();
-			String redirectURL = "/MarketMaps/DisplayMap";
+			String redirectURL = "/MarketMapsProject/DisplayMap";
 		    response.sendRedirect(redirectURL);
 		%>
 	</body>

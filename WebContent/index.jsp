@@ -7,8 +7,8 @@
 	<head>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<meta charset="utf-8">
-	<a href="/MarketMaps/add_company.jsp">Add a company</a>
-	<a href="/MarketMaps/logout.jsp">Logout</a>
+	<a href="/MarketMapsProject/add_company.jsp">Add a company</a>
+	<a href="/MarketMapsProject/logout.jsp">Logout</a>
     
     	<title>MarketMaps Site Administration</title>
 	    <style>
@@ -148,15 +148,17 @@
 		<table border="0" cellpadding="5">
 			<tr>
 				<th>Name</th>
-				<th>Address</th>
 				<th>City</th>
 				<th>State</th>
+				<th>Description</th>
+			<!-- 
+				<th>Address</th>
 				<th>Zipcode</th>
 				<th>Phonenumber</th>
 				<th>Email</th>
-				<th>Description</th>
 				<th>Owner</th>
 				<th>Logo</th>
+				-->
 		    </tr>
 			
 				<%
@@ -169,15 +171,17 @@
 			
 						  <tr>
 						    <td><%= currentCompany.getName()%></td>
-						    <td><%= currentCompany.getAddress()%></td>
-						    <td><%= currentCompany.getCity()%></td>
+					        <td><%= currentCompany.getCity()%></td>
 						    <td><%= currentCompany.getState()%></td>
-						    <td><%= currentCompany.getZipcode()%></td>
-						    <td><%= currentCompany.getPhonenumber()%></td>
-						    <td><%= currentCompany.getEmail()%></td>
-						    <td><%= currentCompany.getDescription()%></td>
-						    <td><%= currentCompany.getOwner()%></td>
-						    
+                            <td><%= currentCompany.getDescription()%></td>
+                            <!-- 
+	                            <td><%= currentCompany.getAddress()%></td>
+							    <td><%= currentCompany.getZipcode()%></td>
+							    <td><%= currentCompany.getPhonenumber()%></td>
+							    <td><%= currentCompany.getEmail()%></td>
+							    <td><%= currentCompany.getDescription()%></td>
+							    <td><%= currentCompany.getOwner()%></td>
+						    -->
 						    <td>
 						<%
 						  if(currentCompany.getImg()!=null){
@@ -218,8 +222,8 @@
 			
 		</table>
 
-	<a href="/MarketMaps/add_company.jsp">Add a company</a>
-	<a href="/MarketMaps/logout.jsp">Logout</a>
+	<a href="/MarketMapsProject/add_company.jsp">Add a company</a>
+	<a href="/MarketMapsProject/logout.jsp">Logout</a>
 </body>
 
 </html>
