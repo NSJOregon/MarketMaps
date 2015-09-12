@@ -6,8 +6,31 @@
 <html>
 	<head>
 	    <title>Edit Company Information</title>
-	</head>
+	    
+	    
+	     <style>
+	    
+	         html{
+		        background: -webkit-linear-gradient(#006666, white); /* For Safari 5.1 to 6.0 */
+				background: -o-linear-gradient(#006666, white); /* For Opera 11.1 to 12.0 */
+				background: -moz-linear-gradient(#006666, white); /* For Firefox 3.6 to 15 */
+				background: linear-gradient(#006666, white); /* Standard syntax (must be last) */
+		     	font: 15px arial, sans-serif;
+                } 
+
+	    </style>
+	    
+</head>
+
+
 <body>
+	<font color="white"><h1>Edit Company Information</h1></font>
+ 	<%
+    	String message = (String) request.getAttribute("message");
+    	if (message==null) message="";
+    %>
+     <p><i><%= message %></i></p>
+ 	
  	<%
     Company currentCompany = (Company)request.getAttribute("currentCompany");
      String b64="";      
@@ -27,7 +50,8 @@
 		
 		    <tr>
 		        <td align="right">Company Name:</td>
-<!-- 		        <td><input type="text" name="name" value="${currentCompany.name}" > -->
+			<!-- We do not want to let the company name be edited, just display the name-->
+			<!-- 		        <td><input type="text" name="name" value="${currentCompany.name}" > -->
 				<td>${currentCompany.name}
 		        <input type="hidden" name="name" value="${currentCompany.name}" >
 		        </td>

@@ -12,15 +12,12 @@
 	<font color="#ffffff" size="2" face="Helvetica, Arial, sans-serif">	<a href="addToCompanyList">Login</a></font>
 	<title>MarketMaps</title>	
 		<style>
-			
-					
 			#grad1{
 
                 background-image: url("backgroundimage.jpg");
                 background-color: #0E4039;
                 background-repeat: no-repeat;
-              	background-size: 100%;
-		
+              	background-size: 100%;		
 			}
 		
 		    #map-canvas {

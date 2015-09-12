@@ -28,35 +28,14 @@ public class EditCompanyInfoServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
                           throws ServletException, IOException
     {
-		
-		
-		
+				
 		String editCompanyName =request.getParameter("name");
 		String editCompany= request.getParameter("editCompany");
 		Company currentCompany = CompanyDB.selectCompany(editCompanyName);
-		// store the company object in the request object
+		// store the company object in the request object that should be edited
 	    request.setAttribute("currentCompany", currentCompany);
 		
-	    if(editCompany!=null && editCompany.equals("Edit")){
-	    	String url="/edit_company.jsp";
-	    	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-	    	dispatcher.forward(request, response);              	        
-	    }
-	    
-		String deleteCompany=new String("");
-		//Get name of company to delete from Database
-		deleteCompany =request.getParameter("removeCompany");
-		String deleteCompanyName=request.getParameter("name");
-
-		//If delete field exists, we want to delete company
-		if(deleteCompany!=null)
-		{
-			CompanyDB.delete(deleteCompanyName);		
-		}
-		
-		
-		//Create company fields for listing all items in index of all companies
-	    
+        //initialize helper variables
 	    Company company = new Company();
 	    Boolean updateCompany=false;
 	    String addCompanyName="";
@@ -64,7 +43,8 @@ public class EditCompanyInfoServlet extends HttpServlet
 	    String addCompanyState="";
 	    String addCompanyDescription="";
 	    FileItem addCompanyLogo=null;    
-	    
+	    String url="";
+	    String message="";
 	
 	    // Create a factory for disk-based file items
         FileItemFactory factory = new DiskFileItemFactory();
@@ -78,7 +58,7 @@ public class EditCompanyInfoServlet extends HttpServlet
 		items = upload.parseRequest(request);	
 		
 		// Process the uploaded items in form
-        // We don't know what the strings are in this field so we need an interator to go through them 
+        // We don't know what the strings are in this field so we need an iterator to go through them 
     	Iterator<FileItem> iter = items.iterator();
     
     	while (iter.hasNext()) {
@@ -86,7 +66,7 @@ public class EditCompanyInfoServlet extends HttpServlet
         	FileItem item = (FileItem) iter.next();
             
         	// If items in form is not a field, it will be our uploaded image file
-            if (!item.isFormField()) {
+            if (!item.isFormField()&&item.getSize()!=0) {
             	addCompanyLogo=item;
             }
             
@@ -127,38 +107,51 @@ public class EditCompanyInfoServlet extends HttpServlet
 				e.printStackTrace();
 		 }	
 		
+	
+        //If we have a company to edit then dispatch to JSP company info
+        if(editCompany!=null && editCompany.equals("Edit")){
+	    	url="/edit_company.jsp";
+	    	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+	    	dispatcher.forward(request, response);              	        
+	    }
         
-        
-        	if(updateCompany==true){
-
-	        	company.setName(addCompanyName);
-	        	company.setCity(addCompanyCity);
-		        company.setState(addCompanyState);
-	            company.setDescription(addCompanyDescription);
-		        if(addCompanyLogo.getSize()!=0){
-//		        if(addCompanyLogo!=null){
-		        company.setLogo(addCompanyLogo);
-	        }
-	        
+        //if we are updating a company and any fields are blank then error message
+        if(updateCompany==true && (addCompanyCity.length()==0||addCompanyState.length()==0||addCompanyDescription.length()==0))
+        {
+               	message="Please complete all fields.";
+               	url="/edit_company.jsp";
+               	Company reviseDataCompany = CompanyDB.selectCompany(addCompanyName);
+               	request.setAttribute("currentCompany", reviseDataCompany);
+               	System.out.println("Made it");
+        }
+        //If we are not displaying a company to edit and we are updating information,
+        //create company object and store to DB
+        else
+	    {
+	
+        	company.setName(addCompanyName);
+        	company.setCity(addCompanyCity);
+	        company.setState(addCompanyState);
+            company.setDescription(addCompanyDescription);
+        	company.setLogo(addCompanyLogo);
+		        
 	        CompanyDB.update(company);	
-    
-	        
+	    
+	        message="";
 	        // Get array of all companies from database
 			ArrayList<Company> companyList = CompanyDB.selectCompanies();
 		    // store the company object in the request object
 		    request.setAttribute("companyList", companyList);
-		    String url="/index.jsp";
-		    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-		    dispatcher.forward(request, response);              	        
-		
-        
+		    url="/index.jsp";
+		    
         }
-             
-        
-        
-	       
-		
-		}//post Method
+
+         
+        request.setAttribute("message", message);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+		dispatcher.forward(request, response);              	        
+ 	
+ }//post Method
 	
  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 	 doPost(request, response);

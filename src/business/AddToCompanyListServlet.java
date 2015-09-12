@@ -116,8 +116,9 @@ public class AddToCompanyListServlet extends HttpServlet
 				e.printStackTrace();
 		 }	
 
-        
-        if(addCompany==true&&deleteCompany==null&&(addCompanyName.length()==0||addCompanyCity.length()==0||addCompanyState.length()==0||addCompanyLogo.getSize()==0||addCompanyDescription.length()==0))
+        //If we do not intend to add a company (i.e. just list or delete a company and redisplay list) then send request 
+        //object message to complete all fields and redirect form to add company information  
+        if(addCompany==true && deleteCompany==null && (addCompanyName.length()==0||addCompanyCity.length()==0||addCompanyState.length()==0||addCompanyLogo.getSize()==0||addCompanyDescription.length()==0))
         {
         	message="Please complete all fields.";
         	url="/add_company.jsp";

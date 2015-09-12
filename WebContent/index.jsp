@@ -12,6 +12,17 @@
     
     	<title>MarketMaps Site Administration</title>
 	    <style>
+	    
+	         html{
+	        background: -webkit-linear-gradient(#006666, white); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(#006666, white); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(#006666, white); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(#006666, white); /* Standard syntax (must be last) */
+	     	font: 15px arial, sans-serif;
+	     
+	         
+	         } 
+	    
 		      #map-canvas {
 		        width: 500px;
 		        height: 400px;
@@ -140,7 +151,7 @@
 	%>
 
 	<body>
-		<h1>MarketMaps Site Administration</h1>
+		<font color="white"><h1>MarketMaps Site Administration</h1></font>
 		
 		
 	  	<div id="map-canvas"></div>
